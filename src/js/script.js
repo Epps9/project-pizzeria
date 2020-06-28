@@ -50,19 +50,70 @@
 
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
-  }
+  };
 
   class Product {
-    constructor() {
+    constructor(id, data) {
+
       const thisProduct = this;
+      thisProduct.id = id;
+      thisProduct.data = data;
+
+      thisProduct.initAccordion ();
+      thisProduct.renderInMenu ();
       console.log('this Product:', thisProduct);
     }
-  }
+    renderInMenu (){
+      const thisProduct = this;
+
+      /* generate HTML based on template */
+      const generatedHTML = templates.menuProduct(thisProduct.data);
+      /* Creat element using utils.createElementFromHTML */
+      thisProduct.element = utils.createDOMFromHTML(generatedHTML);
+      /*find menu container*/
+      const menuContainer = document.querySelector(select.containerOf.menu);
+      /*add element to menu container*/
+      menuContainer.appendChild(thisProduct.element);
+    }
+    initAccordion () {
+      const thisProduct = this;
+      /* find the clickable trigger (the element that should react to clicking) */
+      const clickableElement = this.querySelector(select.menuProduct.clickable);
+      /* START: click event listener to trigger */
+      clickableElement.addEventListener('click', function () {
+        /* prevent default action for event */
+        event.preventDefault();
+        /* toggle active class on element of thisProduct */
+        thisProduct.element.classList.toggle(select.menuProduct.clicable);
+        /* find all active products */
+        const activeProducts = document.querySelectorAll(select.all.menuProductsActive);
+        /* START LOOP: for each active product */
+        for(let activeProduct in activeProducts) {
+          /* START: if the active product isn't the element of thisProduct */
+          if(activeProduct!=this){
+          /* remove class active for the active product */
+            activeProduct.classList.remove(select.menuProduct.clickable);
+            /* END: if the active product isn't the element of thisProduct */
+          }
+        /* END LOOP: for each active product */
+        }
+      /* END: click event listener to trigger */  
+      });
+    }
 
   const app = {
     initMenu: function() {
-      const testProduct = new Product();
-      console.log('test Product', testProduct);
+      const thisApp = this; 
+
+      console.log('thisApp.data:', thisApp.data);
+
+      for(let productData in thisApp.data.products){
+        new Product(productData, thisApp.data.products[productData]);
+      }
+    },
+    initData: function () {
+      const thisApp = this;
+      thisApp.data = dataSource;
     },
     init: function(){
       const thisApp = this;
@@ -72,6 +123,7 @@
       console.log('settings:', settings);
       console.log('templates:', templates);
 
+      thisApp.initData ();
       thisApp.initMenu();
     },
   };
