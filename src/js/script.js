@@ -63,8 +63,8 @@
       thisProduct.getElements ();
       thisProduct.initAccordion ();
       thisProduct.initOrderForm ();
-      thisProduct.processOrder ();
     }
+
     renderInMenu (){
       const thisProduct = this;
       /* generate HTML based on template */
@@ -76,6 +76,7 @@
       /*add element to menu container*/
       menuContainer.appendChild(thisProduct.element);
     }  
+
     getElements(){
       const thisProduct = this;
     
@@ -86,6 +87,7 @@
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
+
     initAccordion (){
       const thisProduct = this;
       /* find the clickable trigger (the element that should react to clicking) */
@@ -129,6 +131,7 @@
         thisProduct.processOrder();
       });
     }
+
     processOrder (){
       const thisProduct = this;
       /* read all data from the form (using utils.serializeFormToObject) and save it to const formData */
@@ -157,22 +160,23 @@
             price -= option.price;
           /* END ELSE IF: if option is not selected and option is default */
           }
-          const images = thisProduct.imageWrapper.querySelector('.' + [paramId] + '-' + [optionId]);
+          const images = thisProduct.imageWrapper.querySelectorAll('.' + [paramId] + '-' + [optionId]);
           if (optionSelected) {
-            for(let image in images) {
+            for(let image of images) {
               image.classList.add(classNames.menuProduct.imageVisible);
             }
           }
           else if (!optionSelected) {
-            for(let image in images) {
+            for(let image of images) {
               image.classList.remove(classNames.menuProduct.imageVisible);
             }
-          };
+          }
         /* END LOOP: for each optionId in param.options */
         }
       /* END LOOP: for each paramId in thisProduct.data.params */ 
       }
       /* set the contents of thisProduct.priceElem to be the value of variable price */
+      price *= thisProduct.amountWidget.value;
       thisProduct.priceElem.innerHTML = price;
     }
   }
