@@ -184,9 +184,11 @@
     initAmountWidget () {
       const thisProduct = this;
       thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
-      thisProduct.amountWidgetElem.addEventListener('updated', thisProduct.processOrder());
+      thisProduct.amountWidgetElem.addEventListener('updated', thisProduct.processOrder.bind(thisProduct));
+      thisProduct.processOrder();
     }
   }
+  
   class AmountWidget {
     constructor (element) {
       const thisWidget = this;
@@ -224,6 +226,7 @@
     initActions () {
       const thisWidget = this;
       thisWidget.input.addEventListener('change', function(event){
+        event.preventDefault();
         thisWidget.setValue(thisWidget.input.value);
       });
       thisWidget.linkDecrease.addEventListener('click', function(event) {
