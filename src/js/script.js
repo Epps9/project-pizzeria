@@ -394,8 +394,8 @@
       const playload = {
         adres: 'test',
         totalPrice: thisCart.totalPrice,
-        phone: thisCart.dom.phone,
-        address: thisCart.dom.address,
+        phone: thisCart.dom.phone.value,
+        address: thisCart.dom.address.value,
         totalNumber: thisCart.totalNumber,
         subtotalPrice: thisCart.subtotalPrice,
         deliveryFee: thisCart.deliveryFee,
