@@ -1,14 +1,16 @@
 import {templates, select} from '../settings.js';
 import AmountWidget from './amountWidget.js';
+import utils from '../utils.js';
+
 
 class Booking {
   constructor(elemBooking) {
     const thisBooking = this;
 
-    thisBooking.render(bookingTabContainer);
+    thisBooking.render(elemBooking);
     thisBooking.initWidgets();
   }
-  render() {
+  render(bookingTabContainer) {
     const thisBooking = this;
 
     //generate HTML using template templates.bookingWidget without arg.
@@ -18,7 +20,8 @@ class Booking {
     //save property wrapper to this object equal to the received argument
     thisBooking.dom.wrapper = bookingTabContainer;
     //change wrapper content to HTML code generated from template
-    thisBooking.dom.wrapper = generatedHTML;
+    const generatedDom = utils.createDOMFromHTML(generatedHTML);
+    thisBooking.dom.wrapper.appendChild(generatedDom);
     //save thisBooking.dom.peopleAmount as single element found in wrapper and matching to select.booking.peopleAmount
     thisBooking.dom.peopleAmount = document.querySelector(select.booking.peopleAmount);
     //like in people Amount find and save element for hoursAmount
