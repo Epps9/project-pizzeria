@@ -102,7 +102,7 @@ export const settings = {
     defaultMin: 1,
     defaultMax: 9,
   }, 
-  atePicker: {
+  datePicker: {
     maxDaysInFuture: 14,
   },
   cart: {
