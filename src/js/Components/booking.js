@@ -2,6 +2,7 @@ import {templates, select} from '../settings.js';
 import AmountWidget from './amountWidget.js';
 import utils from '../utils.js';
 import DatePicker from './datePicker.js';
+import HourPicker from './hourPicker.js';
 
 
 class Booking {
@@ -28,6 +29,7 @@ class Booking {
     //like in people Amount find and save element for hoursAmount
     thisBooking.dom.hoursAmount = document.querySelector(select.booking.hoursAmount);
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
+    thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
   }
   initWidgets() {
     const thisBooking = this;
@@ -35,6 +37,7 @@ class Booking {
     thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
     thisBooking.datePicker = new DatePicker (thisBooking.dom.datePicker);
+    thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
   }
 }
 
