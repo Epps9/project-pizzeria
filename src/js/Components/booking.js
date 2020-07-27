@@ -6,16 +6,16 @@ import HourPicker from './hourPicker.js';
 
 
 class Booking {
-  constructor(elemBooking) {
+  constructor(elemBooking, selectedTable) {
     const thisBooking = this;
 
     thisBooking.render(elemBooking);
     thisBooking.initWidgets();
     thisBooking.getData();
     thisBooking.clickedTable();
-    this.makeReservation();
+    thisBooking.makeReservation(selectedTable);
 
-    clickedTableId;
+    thisBooking.chosenTable;
   }
   getData() {
     const thisBooking = this;
@@ -175,6 +175,7 @@ class Booking {
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
     thisBooking.dom.submit = thisBooking.dom.wrapper.querySelector(select.booking.submit);
+    console.log('thisBooking.dom.submit button', thisBooking.dom.submit);
   }
 
   initWidgets() {
@@ -196,11 +197,12 @@ class Booking {
       table.addEventListener('click', function(){
         table.classList.add(classNames.booking.tableBooked);
         let clickedTableId = table.getAttribute(settings.booking.tableIdAttribute);
-        return clickedTableId;
+        const selectedTable = thisBooking.chosenTable.appendChild(clickedTableId);
+        console.log('selectedTable', selectedTable);
       });
-    }
+    } 
   }
-  sendBooking(){
+  sendBooking(selectedTable){
     const thisBooking = this;
 
     const url = settings.db.url + '/' + settings.db.booking;
@@ -208,7 +210,7 @@ class Booking {
     const playload = {
       date: parseInt(thisBooking.datePicker.value),
       hour: parseInt(thisBooking.hourPicker.value),
-      table: clickedTableId,
+      table: selectedTable,
       duration: parseInt(thisBooking.hoursAmount.value),
       ppl: parseInt(thisBooking.peopleAmount.value),
       starters: [],
@@ -229,12 +231,12 @@ class Booking {
         console.log(parsedResponse);
       });
   }
-  makeReservation() {
+  makeReservation(selectedTable) {
     const thisBooking = this;
 
-    thisBooking.dom.sumbit.addEventListener('click', function(event){
+    thisBooking.dom.submit.addEventListener('click', function(event){
       event.preventDefault();
-      thisBooking.sendBooking();
+      thisBooking.sendBooking(selectedTable);
     });
   } 
 }
