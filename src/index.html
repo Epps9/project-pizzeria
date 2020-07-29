@@ -9,6 +9,8 @@
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
+  <link rel="stylesheet" href="vendor/owl.carousel.css">
+  <link rel="stylesheet" href="vendor/owl.theme.default.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -21,6 +23,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href="main-page">Mamma Mia</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -74,28 +77,56 @@
   </div>
 
   <script id="template-main-page" type="text/x-handlebars-template">
-    <div class="blocks-wrapper">
-      <a href="#order">ORDER ONLINE</a>
-      <a href="#booking">BOOK A TABLE</a>
-      <p>OPENING HOURS</p>
-    </div>
-    <div class="slider-wrapper"> 
-      <img src="./images/pizza-images/pizza-3.jpg">
-      <h1>AMAZING SERVICE!</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <p>-Margaret Osbourne</p>
-    </div>
-    <div class="images">
-      <img src="./images/pizza-images/pizza-4.jpg">
-      <img src="./images/pizza-images/pizza-5.jpg">
-      <img src="./images/pizza-images/pizza-6.jpg">
-      <img src="/images/pizza-images/pizza-7.jpg">
-      <img src="./images/pizza-images/pizza-8.jpg">
-      <img src="./images/pizza-images/pizza-9.jpg">
-    </div>
-    <footer>
-      <a href="#">View more on Instagram</a>
-    </footer>
+    <div class="main-page-wrapper">
+      <div class="blocks-wrapper">
+          <a id="link-1" href="#order">ORDER ONLINE <br> <span> Delicious food ordered to your door!</span></a>
+          <a id="link-2" href="#booking">BOOK A TABLE <br> <span> Visit us!</span></a>
+          <p>OPENING HOURS: <br> <span>TUE-SUN, 12AM - 12PM</span></p>
+      </div>
+      <div class="slider-wrapper owl-carousel owl-theme"> 
+        <div class="slide-1 slide">
+          <div class="image">
+            <img src="./images/pizza-images/pizza-3.jpg">
+          </div>
+            <div class="slide-content">
+            <h1>AMAZING SERVICE!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>-Margaret Osbourne</p>
+          </div>
+        </div>  
+        <div class="slide-2 slide">
+          <div class="image">
+            <img src="./images/pizza-images/pizza-3.jpg">
+          </div>
+            <div class="slide-content">
+            <h1>AMAZING SERVICE!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>-Ozzt Osbourne</p>
+          </div>
+        </div>  
+        <div class="slide-3 slide">
+          <div class="image">
+            <img src="./images/pizza-images/pizza-3.jpg">
+          </div>
+            <div class="slide-content">
+            <h1>AMAZING SERVICE!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>-Jack White</p>
+          </div>
+        </div>  
+      </div>
+      <div class="images">
+        <img src="./images/pizza-images/pizza-4.jpg">
+        <img src="./images/pizza-images/pizza-5.jpg">
+        <img src="./images/pizza-images/pizza-6.jpg">
+        <img src="./images/pizza-images/pizza-7.jpg">
+        <img src="./images/pizza-images/pizza-8.jpg">
+        <img src="./images/pizza-images/pizza-9.jpg">
+      </div>
+      <footer>
+        <a href="#">View more on Instagram</a>
+      </footer>
+    </div>  
   </script>
 
   <script id="template-booking-widget" type="text/x-handlebars-template">
@@ -273,6 +304,26 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
+  <script src="vendor/jquery.js"></script>
+  <script src="vendor/owl.carousel.js"></script>
+  <script>
+    $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+});
+  </script>
   <script src="js/app.js" type="module"></script>
 </body>
 </html>

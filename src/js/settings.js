@@ -72,6 +72,10 @@ export const select = {
   nav: {
     links: '.main-nav a',
   },
+  mainPage: {
+    links: '.link',
+  }
+
 };
   
 export const classNames = {

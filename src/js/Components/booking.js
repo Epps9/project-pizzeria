@@ -175,7 +175,7 @@ class Booking {
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
     thisBooking.dom.submit = thisBooking.dom.wrapper.querySelector(select.booking.submit);
-    console.log('thisBooking.dom.submit button', thisBooking.dom.submit);
+    //console.log('thisBooking.dom.submit button', thisBooking.dom.submit);
   }
 
   initWidgets() {

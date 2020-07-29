@@ -1,0 +1,122 @@
+.main-page-wrapper {
+  background-color: white;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.blocks-wrapper {
+  font-family: Oswald;
+  display: flex;
+  flex-wrap: wrap;
+
+  a:first-child {
+    background-image: url(/images/pizza-images/pizza-1.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  a:nth-child(2) {
+    background-image: url(/images/pizza-images/pizza-2.jpg);
+    background-size: cover;
+  }
+
+  a {
+    width: 49%;
+    height: 120px;
+    margin: 2px;
+    margin-top: 80px;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 40px;
+    background-color: rgb(78, 47, 255);
+    border-radius: 4px;
+    position: relative;
+
+      
+      span {
+        font-size: 14px;
+        visibility: hidden;;    
+        }
+    
+      &:hover > span {
+          display: block;
+          visibility: visible;
+          animation-name: myanimation;
+          animation-duration: 3s;
+      }
+  }
+  @keyframes myanimation {
+      0% {bottom: -100px}
+      100% {bottom: 100px}
+  }
+
+  p {
+    width: 99%;
+    height: 120px;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    background-color: rgb(255, 92, 80);
+    padding: 15px;
+    border-radius: 4px;
+    margin: 2px;
+    margin-bottom: 80px;
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+}
+
+.slide {
+  display: flex;
+  margin: 10px;
+
+  img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+  }
+
+  .slide-content {
+    margin: 0 15px;
+    padding: 0;
+
+    h1 {
+      margin: 7px;
+    }
+
+    p:last-child {
+      font-style: italic;
+    }
+  }
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  padding: 0;
+  justify-content: center;
+
+  img {
+    height: 200px;
+    width: 31%;
+    object-fit: cover;
+    margin: 5px;
+  }
+}
+
+footer {
+  a {
+    color: rgb(255, 92, 80);
+    margin: 20px 12px;
+    padding: 20px;
+    font-size: 16px;
+  }
+}

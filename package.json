@@ -32,6 +32,7 @@
     "dependencies": {
         "flatpickr": "^4.6.3",
         "json-server": "^0.16.1",
+        "owl.carousel": "^2.3.4",
         "rangeslider-pure": "^0.4.11"
     },
     "devDependencies": {
