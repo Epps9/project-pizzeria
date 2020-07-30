@@ -1,0 +1,30 @@
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  padding: 0;
+  justify-content: center;
+
+  img {
+    height: 200px;
+    width: 31%;
+    object-fit: cover;
+    margin: 5px;
+  }
+  img:hover {
+    opacity: 0.5;  
+}
+
+
+
+
+
+<div class="images">
+         <img src="images/pizza-images/pizza-4.jpg">
+         <img src="images/pizza-images/pizza-5.jpg">
+         <img src="images/pizza-images/pizza-6.jpg">
+         <img src="images/pizza-images/pizza-7.jpg">
+         <img src="images/pizza-images/pizza-8.jpg">
+         <img src="images/pizza-images/pizza-9.jpg">
+      </div>

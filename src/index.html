@@ -79,12 +79,18 @@
   <script id="template-main-page" type="text/x-handlebars-template">
     <div class="main-page-wrapper">
       <div class="blocks-wrapper">
-          <a id="link-1" href="#order">ORDER ONLINE <br> <span> Delicious food ordered to your door!</span></a>
-          <a id="link-2" href="#booking">BOOK A TABLE <br> <span> Visit us!</span></a>
+          <a id="link-1" href="#order">
+            <div class="title">ORDER ONLINE</div> 
+            <span> Delicious food ordered to your door!</span>
+          </a>
+          <a id="link-2" href="#booking">
+            <div class="title">BOOK A TABLE</div> 
+            <span> Visit us!</span>
+          </a>
           <p>OPENING HOURS: <br> <span>TUE-SUN, 12AM - 12PM</span></p>
       </div>
       <div class="slider-wrapper owl-carousel owl-theme"> 
-        <div class="slide-1 slide">
+        <div class="item slide">
           <div class="image">
             <img src="./images/pizza-images/pizza-3.jpg">
           </div>
@@ -94,7 +100,7 @@
             <p>-Margaret Osbourne</p>
           </div>
         </div>  
-        <div class="slide-2 slide">
+        <div class="item slide">
           <div class="image">
             <img src="./images/pizza-images/pizza-3.jpg">
           </div>
@@ -104,7 +110,7 @@
             <p>-Ozzt Osbourne</p>
           </div>
         </div>  
-        <div class="slide-3 slide">
+        <div class="item slide">
           <div class="image">
             <img src="./images/pizza-images/pizza-3.jpg">
           </div>
@@ -116,12 +122,54 @@
         </div>  
       </div>
       <div class="images">
-        <img src="./images/pizza-images/pizza-4.jpg">
-        <img src="./images/pizza-images/pizza-5.jpg">
-        <img src="./images/pizza-images/pizza-6.jpg">
-        <img src="./images/pizza-images/pizza-7.jpg">
-        <img src="./images/pizza-images/pizza-8.jpg">
-        <img src="./images/pizza-images/pizza-9.jpg">
+        <div class="image-container">
+          <img src="images/pizza-images/pizza-4.jpg">
+          <div class="overlay fade">
+            <div class="icon">
+              <i class="fas fa-pizza-slice"></i>
+            </div>
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="images/pizza-images/pizza-5.jpg">
+          <div class="overlay fade">
+            <div class="icon">
+              <i class="fas fa-pizza-slice"></i>
+            </div>
+          </div>
+        </div>
+        <div class="image-container">
+          <img src="images/pizza-images/pizza-6.jpg">
+          <div class="overlay fade">
+            <div class="icon">
+              <i class="fas fa-pizza-slice"></i>
+            </div>
+          </div>
+        </div>  
+        <div class="image-container">
+          <img src="images/pizza-images/pizza-7.jpg">
+          <div class="overlay fade">
+            <div class="icon">
+              <i class="fas fa-pizza-slice"></i>
+            </div>
+          </div>
+        </div>  
+        <div class="image-container">
+          <img src="images/pizza-images/pizza-8.jpg">
+          <div class="overlay fade">
+            <div class="icon">
+              <i class="fas fa-pizza-slice"></i>
+            </div>
+          </div>
+        </div>  
+        <div class="image-container">
+          <img src="images/pizza-images/pizza-9.jpg">
+          <div class="overlay fade">
+            <div class="icon">
+              <i class="fas fa-pizza-slice"></i>
+            </div>
+          </div>
+        </div>    
       </div>
       <footer>
         <a href="#">View more on Instagram</a>
@@ -304,26 +352,29 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
-  <script src="vendor/jquery.js"></script>
+  <script src="js/app.js" type="module"></script>
+  <script src="vendor/jquery.min.js"></script>
   <script src="vendor/owl.carousel.js"></script>
   <script>
-    $('.owl-carousel').owlCarousel({
+    setTimeout(function(){
+      $('.owl-carousel').owlCarousel({
     loop:true,
     margin:10,
     nav:true,
+    autoplay:true,
     responsive:{
         0:{
             items:1
         },
         600:{
-            items:3
+            items:1
         },
         1000:{
-            items:5
+            items:1
         }
     }
 });
+    },3000);
   </script>
-  <script src="js/app.js" type="module"></script>
 </body>
 </html>

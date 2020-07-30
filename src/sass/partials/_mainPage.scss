@@ -34,23 +34,31 @@
     background-color: rgb(78, 47, 255);
     border-radius: 4px;
     position: relative;
+    overflow: hidden;
+    transition-duration: 1s;
 
-      
-      span {
-        font-size: 14px;
-        visibility: hidden;;    
-        }
-    
-      &:hover > span {
-          display: block;
-          visibility: visible;
-          animation-name: myanimation;
-          animation-duration: 3s;
-      }
+    .title {
+      margin-top: 0;
+      transition-duration: 1s;
+    }
+
+    span {
+      font-size: 14px;
+      display: block;
+      margin-top: 50px;
+      transition-duration: 1s;
+    }
   }
-  @keyframes myanimation {
-      0% {bottom: -100px}
-      100% {bottom: 100px}
+
+  a:hover {
+    .title {
+      margin-top: -20px;
+    }
+
+    span {
+      margin-top: 12px;
+    }
+
   }
 
   p {
@@ -104,12 +112,47 @@
   padding: 0;
   justify-content: center;
 
-  img {
+  .image-container {
     height: 200px;
     width: 31%;
-    object-fit: cover;
-    margin: 5px;
+    position: relative;
+
+    .fade {
+      height: 100%;
+      width: 100%;
+      top: 0;
+    }
+
+    .overlay {
+      position: absolute;
+      transition: all .3 ease;
+      opacity: 0;
+      background-color: darksalmon;
+    }
+      
+    .icon {
+      position: absolute;
+      color: white;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+    }
   }
+
+  .image-container:hover .overlay {
+    opacity: 0.8;
+  }
+
+  img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    padding: 5px;
+    display: block;
+  }
+
+
 }
 
 footer {
