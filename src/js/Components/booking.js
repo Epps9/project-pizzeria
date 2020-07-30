@@ -238,6 +238,26 @@ class Booking {
       event.preventDefault();
       thisBooking.sendBooking(selectedTable);
     });
+  }
+  tablesAvailable (date, table) {
+    const thisBooking = this;
+    const slider = document.querySelector(select.HourPicker.slider);
+
+
+    if (thisBooking.booked[date] == 'undefined') {
+      slider.classList.add(classNames.slider.green);
+    }
+
+    if(thisBooking.booked[date] == true
+      && thisBooking.booked[table] == '1' && '1' && '3') {
+      slider.classList.add(classNames.slider.red);
+    }
+
+    if(thisBooking.booked[date] == true
+      && thisBooking.booked[table] == '1' || '2' || '3') {
+      slider.classList.add(classNames.slider.orange);
+    }
+
   } 
 }
 

@@ -54,13 +54,14 @@
     right: 0;
   }
 }
+
   
 .rangeSlider {
   top: $base-size;
   background: lighten($color-dark, 70%);
   box-shadow: none;
   height: $base-size;
-  
+
   &__handle {
     box-shadow: none;
     border: 0;
@@ -79,8 +80,19 @@
     }  
   }
 
+  .red {
+    background: red;
+  }
+
+  .orange {
+    background: orange;
+  }
+
+  .green {
+    background: green;
+  }
+
   &__fill {
-    background: $color-success;
     transition-timing-function: cubic-bezier(0, 1, 0, 1);
     transition: width 100ms;
     box-shadow: none;

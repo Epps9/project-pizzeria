@@ -42,6 +42,7 @@ export const select = {
       wrapper: '.hour-picker',
       input: 'input[type="range"]',
       output: '.output',
+      slider: '.rangeSlider',
     },
   },
   // CODE ADDED START
@@ -97,6 +98,11 @@ export const classNames = {
   pages: {
     active: 'active',
   },
+  slider: {
+    red: '.red',
+    ogange: '.orange',
+    green: '.green',
+  }
 };
   
 export const settings = {
