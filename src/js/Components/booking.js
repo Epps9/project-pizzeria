@@ -14,7 +14,9 @@ class Booking {
     thisBooking.getData();
     thisBooking.clickedTable();
     thisBooking.makeReservation(chosenTable);
+    thisBooking.sliderColor();
 
+    thisBooking.booked = {};
     thisBooking.chosenTable;
   }
   getData() {
@@ -74,7 +76,7 @@ class Booking {
   parseData(bookings, eventsCurrent, eventsRepeat) {
     const thisBooking = this;
 
-    thisBooking.booked = {};
+    console.log('thisBooking.booked jest pusty', thisBooking.booked);
 
     for(let item of bookings) {
       thisBooking.makeBooked(item.data, item.hour, item.duration, item.table);
@@ -208,7 +210,7 @@ class Booking {
 
     const playload = {
       date: thisBooking.datePicker.value,
-      hour: parseInt(thisBooking.hourPicker.value),
+      hour: thisBooking.hourPicker.value,
       table: parseInt(thisBooking.chosenTable),
       duration: parseInt(thisBooking.hoursAmount.value),
       ppl: parseInt(thisBooking.peopleAmount.value),
@@ -240,28 +242,39 @@ class Booking {
     });
   }
 
-  makeObject(date, hour, table) {
+  sliderColor () {
     const thisBooking = this;
 
-    thisBooking.hourTableObject = {};
+    //wrapper dla slidera do którego dołączymy diva
+    const slider = document.querySelector(select.hourPicker.slider);
+    console.log('pokaż slider', slider);//nie łapie mi slidera nie wiem dlaczego 
 
-    if(typeof thisBooking.booked[date] !== 'undefined') {
-      thisBooking.hourTableObject[date] = {};
+    //obiekt z godzinami
+    thisBooking.hoursWithTables = {};
+
+    //złapana godzina początkowa czyli 12
+    const minHour = document.querySelector('.slider').min;
+    console.log('pokaż minHour', minHour);// tutaj też nie łapie
+
+    //złapana godzina końcowa czyli 24
+    const maxHour = document.querySelector('.slider').max;
+
+    //tworzę obiekt z godzinami od 12 do 24 z których każda ma mieć tablicę z numerem stolika)
+    for(let hour = minHour; hour <= maxHour; hour += 0.5) {
+      thisBooking.hoursWithTables[hour] = [];//potrzebuję tu stolika ale nie wiem skąd i jak go wziąć
+
+    //tej logiki nie rozumiem, a właściwie rozumiem tak: jeśli hoursWithTables ma właściwość hour to wtedy stwórz nowego diva dodaj mu klasę z kolorem i liczbą stolików?? a później dodaj to do wrappera w którym jest slider? 
+      if(thisBooking.hoursWithTables[hour]) {
+        const div = document.createElement('div');
+        div.className = 'green' + thisBooking.hoursWithTables[hour].lenght;
+
+        slider.appendChild(div);
+      }
     }
 
-    for(let item of thisBooking.booked) {
-      item[date] = thisBooking.hourTableObject[date];
-      item[date][hour] = thisBooking.hourTableObject[date][hour];
-      item[date][hour][table] = thisBooking.hourTableObject[date][hour][table]; 
-    }
+
   }
-  createObject() {
-    const thisBooking = this;
-    
-    for(let item of thisBooking.booked) {
-      thisBooking.makeObject(item.date, item.hour, item.table);
-    }
-  }
+
 }
 
 export default Booking;
