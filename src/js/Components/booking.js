@@ -76,14 +76,13 @@ class Booking {
   parseData(bookings, eventsCurrent, eventsRepeat) {
     const thisBooking = this;
 
-    console.log('thisBooking.booked jest pusty', thisBooking.booked);
-
     for(let item of bookings) {
-      thisBooking.makeBooked(item.data, item.hour, item.duration, item.table);
+      //console.log('aaa', item);
+      thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
     }
 
     for(let item of eventsCurrent) {
-      thisBooking.makeBooked(item.data, item.hour, item.duration, item.table);
+      thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
     }
 
     const minDate = thisBooking.datePicker.minDate;
@@ -100,8 +99,6 @@ class Booking {
     //console.log('thisBooking booked', thisBooking.booked);
     thisBooking.updateDOM();
   }
-
-
   makeBooked(date, hour, duration, table) {
     const thisBooking = this;
 
@@ -155,6 +152,7 @@ class Booking {
         table.classList.remove(classNames.booking.tableBooked);
       }
     } 
+    this.sliderColor();
   }
 
   render(bookingTabContainer) {
@@ -179,6 +177,7 @@ class Booking {
     thisBooking.dom.submit = thisBooking.dom.wrapper.querySelector(select.booking.submit);
     //console.log('thisBooking.dom.submit button', thisBooking.dom.submit);
   }
+
 
   initWidgets() {
     const thisBooking = this;
@@ -245,34 +244,21 @@ class Booking {
   sliderColor () {
     const thisBooking = this;
 
-    //wrapper dla slidera do którego dołączymy diva
-    const slider = document.querySelector(select.hourPicker.slider);
-    console.log('pokaż slider', slider);//nie łapie mi slidera nie wiem dlaczego 
+    const slider = document.querySelector('.range-slider');
 
-    //obiekt z godzinami
-    thisBooking.hoursWithTables = {};
+    const date = thisBooking.date;
 
-    //złapana godzina początkowa czyli 12
-    const minHour = document.querySelector('.slider').min;
-    console.log('pokaż minHour', minHour);// tutaj też nie łapie
-
-    //złapana godzina końcowa czyli 24
-    const maxHour = document.querySelector('.slider').max;
-
-    //tworzę obiekt z godzinami od 12 do 24 z których każda ma mieć tablicę z numerem stolika)
-    for(let hour = minHour; hour <= maxHour; hour += 0.5) {
-      thisBooking.hoursWithTables[hour] = [];//potrzebuję tu stolika ale nie wiem skąd i jak go wziąć
-
-    //tej logiki nie rozumiem, a właściwie rozumiem tak: jeśli hoursWithTables ma właściwość hour to wtedy stwórz nowego diva dodaj mu klasę z kolorem i liczbą stolików?? a później dodaj to do wrappera w którym jest slider? 
-      if(thisBooking.hoursWithTables[hour]) {
-        const div = document.createElement('div');
-        div.className = 'green' + thisBooking.hoursWithTables[hour].lenght;
-
-        slider.appendChild(div);
+    for(let hour = 12; hour < 24; hour += .5) {
+      console.log(hour);
+      
+      const div = document.createElement('div');
+      if(thisBooking.booked[date][hour]) {
+        div.className = 'block size' + thisBooking.booked[date][hour].length;
+      } else {
+        div.className = 'block';
       }
+      slider.appendChild(div); 
     }
-
-
   }
 
 }

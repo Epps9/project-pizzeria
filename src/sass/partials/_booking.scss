@@ -61,6 +61,8 @@
   background: lighten($color-dark, 70%);
   box-shadow: none;
   height: $base-size;
+  position: relative;
+  z-index: 0;
 
   &__handle {
     box-shadow: none;
@@ -80,16 +82,20 @@
     }  
   }
 
-  .red {
+  .size3 {
     background: red;
   }
 
-  .orange {
+  .size2 {
     background: orange;
   }
 
-  .green {
+  .block {
+    width: 15px;
+    height: 12px;
     background: green;
+    position: absolute;
+    z-index: 1;
   }
 
   &__fill {
