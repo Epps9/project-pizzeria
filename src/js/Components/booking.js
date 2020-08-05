@@ -243,7 +243,7 @@ class Booking {
   sliderColor () {
     const thisBooking = this;
 
-    const slider = document.querySelector('.range-slider');
+    const slider = document.querySelector('.rangeSlider');
     const colorWrapper = document.createElement('div');
     colorWrapper.className = 'color-wrapper';
 
@@ -260,6 +260,7 @@ class Booking {
       }
       colorWrapper.appendChild(div); 
     }
+    console.log(colorWrapper);
 
     slider.prepend(colorWrapper);
   }  

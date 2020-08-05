@@ -62,7 +62,6 @@
   box-shadow: none;
   height: $base-size;
   position: relative;
-  z-index: 0;
 
   &__handle {
     box-shadow: none;
@@ -84,10 +83,10 @@
 
 
   .color-wrapper {
-    width: 100%;
+    width: 102%;
     height: 20px;
     position: absolute;
-    bottom: -15px;
+    bottom: -2px;
   
     .block {
       width: 4.1%;
