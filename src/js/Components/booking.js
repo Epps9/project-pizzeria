@@ -14,7 +14,6 @@ class Booking {
     thisBooking.getData();
     thisBooking.clickedTable();
     thisBooking.makeReservation(chosenTable);
-    thisBooking.sliderColor();
 
     thisBooking.booked = {};
     thisBooking.chosenTable;
@@ -152,7 +151,7 @@ class Booking {
         table.classList.remove(classNames.booking.tableBooked);
       }
     } 
-    this.sliderColor();
+    thisBooking.sliderColor();
   }
 
   render(bookingTabContainer) {
@@ -245,21 +244,25 @@ class Booking {
     const thisBooking = this;
 
     const slider = document.querySelector('.range-slider');
+    const colorWrapper = document.createElement('div');
+    colorWrapper.className = 'color-wrapper';
 
     const date = thisBooking.date;
 
     for(let hour = 12; hour < 24; hour += .5) {
-      console.log(hour);
       
       const div = document.createElement('div');
-      if(thisBooking.booked[date][hour]) {
+      //console.log(hour, date);
+      if(thisBooking.booked[date] && thisBooking.booked[date][hour]) {
         div.className = 'block size' + thisBooking.booked[date][hour].length;
       } else {
         div.className = 'block';
       }
-      slider.appendChild(div); 
+      colorWrapper.appendChild(div); 
     }
-  }
+
+    slider.prepend(colorWrapper);
+  }  
 
 }
 
